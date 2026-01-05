@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('currencies', function (Blueprint $table) {
-            $table->string('id')->unique();
-            $table->string('name');
-            $table->integer('exchange_rate');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('image')->nullable();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('currencies');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

@@ -1,4 +1,7 @@
 @props(['routeName'])
-
-<a class="nav-link {{ $routeName != '' ? active_link("{$routeName}*") : '' }}" aria-current="page"
-    href="{{ route("{$routeName}") }}">{{ $slot }}</a>
+<?php
+$activeLinkClass = isset($routeName) ? active_link("{$routeName}*") : '';
+$route = isset($routeName) ? route("{$routeName}") : '#';
+?>
+<a {{ $attributes->class(['nav-link', "{$activeLinkClass}"]) }} aria-current="page"
+    href="{{ $route }}">{{ $slot }}</a>

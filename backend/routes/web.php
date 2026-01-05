@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\Auth\LoginController;
-use App\Http\Controllers\Admin\BurgerController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,12 +14,22 @@ Route::get('/login', [LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [LoginController::class, 'attempt'])->withoutMiddleware('auth:admin')->name('login.attempt');
 
-Route::prefix('burgers')->group(function () {
-    Route::get('/', [BurgerController::class, 'index'])->name('burger.index');
-    Route::get('/create', [BurgerController::class, 'create'])->name('burger.create');
-    Route::post('/store', [BurgerController::class, 'store'])->name('burger.store');
-    Route::get('/{burger}', [BurgerController::class, 'show'])->name('burger.show');
-    Route::get('/{burger}/edit', [BurgerController::class, 'edit'])->name('burger.edit');
-    Route::put('/{burger}/update', [BurgerController::class, 'update'])->name('burger.update');
-    Route::delete('/{burger}/delete', [BurgerController::class, 'delete'])->name('burger.delete');
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index'])->name('product');
+    Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/{product}', [ProductController::class, 'show'])->name('product.show');
+    Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/{product}/update', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/{product}/delete', [ProductController::class, 'delete'])->name('product.delete');
+});
+
+Route::prefix('currencies')->group(function () {
+    Route::get('/', [CurrencyController::class, 'index'])->name('currency');
+    Route::get('/create', [CurrencyController::class, 'create'])->name('currency.create');
+    Route::post('/store', [CurrencyController::class, 'store'])->name('currency.store');
+    Route::get('/{currency}', [CurrencyController::class, 'show'])->name('currency.show');
+    Route::get('/{currency}/edit', [CurrencyController::class, 'edit'])->name('currency.edit');
+    Route::put('/{currency}/update', [CurrencyController::class, 'update'])->name('currency.update');
+    Route::delete('/{currency}/delete', [CurrencyController::class, 'delete'])->name('currency.delete');
 });

@@ -1,0 +1,12 @@
+:root {
+    --sidebar-width: 20%;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+}
+
+.content {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+}

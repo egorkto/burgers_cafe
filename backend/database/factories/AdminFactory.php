@@ -12,6 +12,8 @@ class AdminFactory extends Factory
         return [
             'email' => 'admin@mail.com',
             'password' => Hash::make('admin'),
+            'name' => 'Admin',
+            'avatar' => 'logo1.jpeg',
         ];
     }
 }
