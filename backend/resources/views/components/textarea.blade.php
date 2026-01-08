@@ -1,1 +1,1 @@
-<textarea type="text" {{ $attributes->class(['form-control']) }}></textarea>
+<textarea type="text" {{ $attributes->class(['form-control']) }}>{{ $slot }}</textarea>

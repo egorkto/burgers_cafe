@@ -11,7 +11,8 @@ class CurrencyController extends Controller
 {
     public function index()
     {
-        return view("currency");
+        $currencies = Currency::all();
+        return view("currency.index", compact("currencies"));
     }
 
     public function create()
@@ -22,23 +23,23 @@ class CurrencyController extends Controller
     public function store(StoreRequest $request)
     {
         $validated = $request->validated();
-
-        $currency = Currency::query()->create([
+        $currency = currency::query()->create([
             'id' => $validated['id'],
             'name' => $validated['name'],
+            'exchange_rate' => $validated['exchange_rate'],
         ]);
 
-        return redirect(route('currency.index'));
+        return redirect(route('currency'));
     }
 
     public function show(Currency $currency)
     {
-        return view("currencys.show", compact($currency));
+        return view("currency.show", compact('currency'));
     }
 
     public function edit(Currency $currency)
     {
-        return view("currencys.edit", compact($currency));
+        return view("currency.edit", compact('currency'));
     }
 
     public function update(UpdateRequest $request, Currency $currency)
@@ -47,13 +48,14 @@ class CurrencyController extends Controller
         $currency->update([
             'id' => $validated['id'],
             'name' => $validated['name'],
+            'exchange_rate' => $validated['exchange_rate'],
         ]);
-        return redirect(route('currency.index'));
+        return redirect(route('currency.show', $currency->id));
     }
 
     public function delete(Currency $currency)
     {
         $currency->delete();
-        return redirect(route('currency.index'));
+        return redirect(route('currency'));
     }
 }

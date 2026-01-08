@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Currency;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,9 +14,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['required', 'string', 'max:15', 'unique:currencies,id'],
-            'name' => ['required', 'string', 'max:40'],
-            'exchange_rate' => ['required', 'numeric', 'min:0.01'],
+            "title" => ['required', 'string', 'max:255', 'unique:categories,title'],
         ];
     }
 }

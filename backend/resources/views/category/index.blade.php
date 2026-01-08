@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h4>{{ __('Currencies') }}</h4>
+        <h4>{{ __('Categories') }}</h4>
         <div class="row d-flex justify-content-center">
             <div class="col-12">
                 <div class="card">
@@ -24,28 +24,24 @@
                                 </div>
                             </form>
                             <div>
-                                <a class="btn btn-primary" href="{{ route('currency.create') }}">{{ __('Add') }}</a>
+                                <a class="btn btn-primary" href="{{ route('category.create') }}">{{ __('Add') }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        @if ($currencies->isEmpty())
+                        @if ($categories->isEmpty())
                             {{ __('No one menu elements') }}
                         @else
                         @endif
                         <div class="list-group">
-                            <div class="row row-cols-6">
-                                @foreach ($currencies as $currency)
-                                    <div class="col">
-                                        <a href="{{ route('currency.show', $currency->id) }}"
-                                            class="text-decoration-none text-black">
-                                            <div class="card d-flex text-center align-items-center">
-                                                <h4>{{ $currency->id }}</h4>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
+                            @foreach ($categories as $category)
+                                <div class="list-group-item">
+                                    <a href="{{ route('category.show', $category->id) }}"
+                                        class="text-decoration-none text-black">
+                                        <h4>{{ $category->title }}</h4>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

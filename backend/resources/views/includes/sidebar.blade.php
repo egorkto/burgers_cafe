@@ -12,6 +12,9 @@ $admin = Auth::guard('admin')->user();
             <x-nav-link class="text-white" routeName="product">{{ __('Menu') }}</x-nav-link>
         </li>
         <li class="nav-item">
+            <x-nav-link class="text-white" routeName="category">{{ __('Categories') }}</x-nav-link>
+        </li>
+        <li class="nav-item">
             <x-nav-link class="text-white" routeName="currency">{{ __('Currencies') }}</x-nav-link>
         </li>
     </ul>

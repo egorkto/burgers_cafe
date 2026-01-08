@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Currency;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -13,10 +14,9 @@ class UpdateRequest extends FormRequest
 
     public function rules(): array
     {
+        $currentId = $this->category->id;
         return [
-            'id' => ['required', 'string', 'max:15', 'unique:currencies,id'],
-            'name' => ['required', 'string', 'max:40'],
-            'exchange_rate' => ['required', 'numeric', 'min:0.01'],
+            "title" => ['required', 'string', 'max:255', Rule::unique('categories', 'title')->ignore($currentId)],
         ];
     }
 }

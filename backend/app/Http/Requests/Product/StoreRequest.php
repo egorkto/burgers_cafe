@@ -18,6 +18,7 @@ class StoreRequest extends FormRequest
             'description' => ['required', 'string', 'max:100'],
             'price' => ['required', 'numeric', 'min:0.01'],
             'image' => ['nullable', 'image'],
+            'category_id' => ['nullable', 'numeric', 'exists:categories,id'],
         ];
     }
 }

@@ -1,0 +1,15 @@
+/* .unchecked-svg {
+    display: block;
+} */
+
+.checked-svg {
+    display: none;
+}
+
+.input-checkbox:checked + .unchecked-svg {
+    display: none;
+}
+
+/* .input-checkbox:checked ~ .checked-svg {
+    display: block;
+} */
