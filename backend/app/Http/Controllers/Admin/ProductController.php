@@ -44,7 +44,7 @@ class ProductController extends Controller
         if ($category_id = $validated['category_id'] ?? null) {
             $query->where('category_id', $category_id);
         }
-        $products = $query->get();
+        $products = $query->paginate(15);
         $categories = Category::all();
         return view("product.index", compact("products", 'categories'));
     }

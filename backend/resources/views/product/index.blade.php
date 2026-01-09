@@ -49,7 +49,7 @@
                                 <div class="d-flex flex-row gap-1 text-nowrap align-items-center">
                                     <span>Sort by:</span>
                                     <select class="form-select border-0" aria-label="Category select" name="sort_by">
-                                        <option value="created" selected>{{ __('Created') }}</option>
+                                        <option value="" selected>{{ __('Created') }}</option>
                                         <option value="updated">{{ __('Updated') }}</option>
                                         <option value="name">{{ __('Name') }}</option>
                                         <option value="price">{{ __('Price') }}</option>
@@ -102,6 +102,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="d-flex justify-content-center my-2">
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
