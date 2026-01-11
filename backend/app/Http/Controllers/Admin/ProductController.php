@@ -21,28 +21,28 @@ class ProductController extends Controller
         if ($search = $validated['search'] ?? null) {
             $query->where('name', 'like', "%{$search}%");
         }
+        $sortingColumn = 'created_at';
+        $direction = isset($validated['desc_sort']) ? 'desc' : 'asc';
         if ($sortOption = $validated['sort_by'] ?? null) {
-            $columnName = '';
-            $direction = isset($validated['desc_sort']) ? 'desc' : 'asc';
             switch ($sortOption) {
                 case 'name':
-                    $columnName = 'Name';
+                    $sortingColumn = 'name';
                     break;
                 case 'price':
-                    $columnName = 'Price';
+                    $sortingColumn = 'price';
                     break;
                 case 'updated':
-                    $columnName = 'Updated_at';
+                    $sortingColumn = 'updated_at';
                     break;
                 case 'created':
                 default:
-                    $columnName = 'Created_at';
+                    $sortingColumn = 'created_at';
                     break;
             }
-            $query->orderBy($columnName, $direction);
         }
-        if ($category_id = $validated['category_id'] ?? null) {
-            $query->where('category_id', $category_id);
+        $query->orderBy($sortingColumn, $direction);
+        if ($category_ids = $validated['category_ids'] ?? null) {
+            $query->whereIn('category_id', $category_ids);
         }
         $products = $query->paginate(15);
         $categories = Category::all();

@@ -45,6 +45,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="d-flex justify-content-center my-2">
+                    {{ $categories->links() }}
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Product;
+namespace App\Http\Requests\UserRequest;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -15,8 +15,7 @@ class IndexRequest extends FormRequest
     {
         return [
             'search' => ['nullable', 'string', 'max:100'],
-            'category_ids' => ['nullable', 'array'],
-            'sort_by' => ['nullable', 'string', 'in:created,updated,name,price'],
+            'sort_by' => ['nullable', 'string', 'in:date,message,name'],
             'desc_sort' => ['nullable'],
         ];
     }

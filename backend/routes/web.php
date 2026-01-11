@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\UserRequestController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -33,6 +34,13 @@ Route::prefix('category')->group(function () {
     Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
     Route::put('/{category}/update', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/{category}/delete', [CategoryController::class, 'delete'])->name('category.delete');
+});
+
+Route::prefix('user-request')->group(function () {
+    Route::get('/', [UserRequestController::class, 'index'])->name('user-request');
+    Route::post('/store', [UserRequestController::class, 'store'])->name('user-request.store');
+    Route::get('/{request}', [UserRequestController::class, 'show'])->name('user-request.show');
+    Route::delete('/{user-request}/delete', [UserRequestController::class, 'delete'])->name('user-request.delete');
 });
 
 Route::prefix('currencies')->group(function () {
