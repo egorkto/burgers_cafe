@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest\IndexRequest;
+use App\Http\Requests\UserRequest\StoreRequest;
 use App\Models\UserRequest;
-use Symfony\Component\HttpFoundation\Request;
 
 class UserRequestController extends Controller
 {
@@ -37,10 +37,14 @@ class UserRequestController extends Controller
         return view('user-request.index', compact('requests'));
     }
 
-    public function store() {}
-
     public function show(UserRequest $request)
     {
         return view('user-request.show', compact('request'));
+    }
+
+    public function delete(UserRequest $request)
+    {
+        $request->delete();
+        return redirect(route('user-request'));
     }
 }

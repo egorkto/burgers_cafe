@@ -1,11 +1,18 @@
-<script setup></script>
+<script>
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+};
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <Header></Header>
+  <router-view></router-view>
+  <Footer></Footer>
 </template>
 
 <style scoped></style>

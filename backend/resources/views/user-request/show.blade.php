@@ -10,6 +10,12 @@
                     <div>
                         <h4>{{ $request->name }}</h4>
                     </div>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-secondary" href="{{ url()->previous() }}">{{ __('Back') }}</a>
+                        <x-form action="{{ route('user-request.delete', $request->id) }}" method="DELETE">
+                            <button class="btn btn-danger" type='submit'>{{ __('Delete') }}</button>
+                        </x-form>
+                    </div>
                 </div>
                 <div>
                     <h6>{{ $request->message }} {{ __('RUB') }}</h6>

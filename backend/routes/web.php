@@ -38,9 +38,8 @@ Route::prefix('category')->group(function () {
 
 Route::prefix('user-request')->group(function () {
     Route::get('/', [UserRequestController::class, 'index'])->name('user-request');
-    Route::post('/store', [UserRequestController::class, 'store'])->name('user-request.store');
     Route::get('/{request}', [UserRequestController::class, 'show'])->name('user-request.show');
-    Route::delete('/{user-request}/delete', [UserRequestController::class, 'delete'])->name('user-request.delete');
+    Route::delete('/{request}/delete', [UserRequestController::class, 'delete'])->name('user-request.delete');
 });
 
 Route::prefix('currencies')->group(function () {
